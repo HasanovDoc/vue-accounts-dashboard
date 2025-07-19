@@ -22,6 +22,9 @@ export const useAccountsStore = defineStore('accounts', {
       const index = this.accounts.findIndex(acc => acc.id === updatedAccount.id);
       if (index !== -1) this.accounts[index] = updatedAccount;
     },
+    clearAll() {
+      this.accounts = []
+    }
   },
   persist: true,
 });
