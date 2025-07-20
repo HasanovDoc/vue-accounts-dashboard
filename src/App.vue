@@ -28,7 +28,7 @@ button {
   padding: 0.5em 1.2em;
   font-size: 1rem;
   cursor: pointer;
-  transition: background 0.2s, box-shadow 0.2s, color 0.2s;
+  transition: background 0.3s, box-shadow 0.2s, color 0.2s;
 
   &:hover, &:focus {
     background: #31363b;
@@ -73,8 +73,8 @@ select {
   transition: border-color 0.2s, box-shadow 0.2s;
 
   &:focus {
-    border-color: #858788;
-    box-shadow: 0 0 5px rgba(147, 149, 151, 0.5);
+    /* border-color: #858788;
+    box-shadow: 0 0 5px rgba(147, 149, 151, 0.5); */
     outline: none;
   }
 }
