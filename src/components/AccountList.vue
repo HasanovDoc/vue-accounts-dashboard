@@ -1,16 +1,18 @@
 <template>
-  <div class="account-list">
+  <div class="account-list-container">
     <div class="account-title">
       <h1>Учётные записи</h1>
-      <button @click="addAndFocus">+</button>
+      <button @click="addAndFocus" class="add-btn">+</button>
     </div>
-    <div v-for="account in accounts" :key="account.id">
-      <AccountForm 
-        ref="accountForms"
-        :account="account" 
-        @update="updateAccount" 
-        @delete="deleteAccount(account.id)"
-      />
+    <div class="account-list">
+      <div v-for="account in accounts" :key="account.id" class="list_item">
+        <AccountForm 
+          ref="accountForms"
+          :account="account" 
+          @update="updateAccount" 
+          @delete="deleteAccount(account.id)"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -30,6 +32,7 @@ const accountForms = ref<InstanceType<typeof AccountForm>[]>([]);
 const addAndFocus = async () => {
   addAccount();
   await nextTick();
+
   // Фокус на последнем AccountForm
   const lastForm = accountForms.value[accountForms.value.length - 1];
   lastForm?.focusFirstInput();
@@ -37,12 +40,33 @@ const addAndFocus = async () => {
 </script>
 
 <style scoped lang="scss">
-.account-list {
+.account-list-container {
   width: 100vw;
   height: 100vh;
+  padding: 10px;
 }
 
 .account-title {
   display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
 }
+
+.add-btn {
+
+}
+
+.account-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.list_head {
+  display: flex;
+}
+
+.list_item {}
+
+
 </style>
