@@ -1,5 +1,7 @@
 # vue-accounts-dashboard
 
+[![Live Demo](https://img.shields.io/badge/Demo-Live-green?style=for-the-badge)](https://hasanovdoc.github.io/vue-accounts-dashboard/)
+
 Простое Vue 3 приложение для управления списком учётных записей с поддержкой Pinia и адаптивным тёмным интерфейсом.
 
 ## Возможности
