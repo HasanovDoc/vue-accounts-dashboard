@@ -2,7 +2,7 @@
   <div class="account-list-container">
     <div class="account-title">
       <h1>Учётные записи</h1>
-      <button @click="addAndFocus" class="add-btn">+</button>
+      <button @click="addAndFocus" class="add-btn"></button>
     </div>
     <div class="account-list">
       <div v-for="account in accounts" :key="account.id" class="list_item">
@@ -53,7 +53,70 @@ const addAndFocus = async () => {
 }
 
 .add-btn {
+  background: linear-gradient(90deg, #3a3f47 0%, #23272a 100%);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  font-weight: bold;
+  line-height: 1;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
 
+  &::after {
+    content: '';
+    display: block;
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: none;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 16px;
+    height: 3px;
+    background: #fff;
+    border-radius: 2px;
+    transform: translate(-50%, -50%);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 3px;
+    height: 16px;
+    background: #fff;
+    border-radius: 2px;
+    transform: translate(-50%, -50%);
+  }
+
+  &:hover, &:focus {
+    background: linear-gradient(90deg, #4e5666 0%, #31363b 100%);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.22);
+    transform: scale(1.08);
+    outline: none;
+  }
+
+  &:active {
+    background: #23272a;
+    color: #b0b0b0;
+    transform: scale(0.97);
+  }
 }
 
 .account-list {
