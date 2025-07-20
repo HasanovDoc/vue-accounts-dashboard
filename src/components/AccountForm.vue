@@ -33,13 +33,32 @@
         />
       </div>
       <div class="row__item" v-if="localAccount.type === 'Локальная'">
-        <input 
-          v-model="localAccount.password"
-          type="password"
-          placeholder="Пароль*"
-          required
-          @blur="validate"
-        />
+        <div class="password-wrapper">
+          <input 
+            :type="showPassword ? 'text' : 'password'"
+            v-model="localAccount.password"
+            placeholder="Пароль*"
+            required
+            @blur="validate"
+          />
+          <button
+            type="button"
+            class="eye-btn"
+            @click="showPassword = !showPassword"
+            :aria-label="showPassword ? 'Скрыть пароль' : 'Показать пароль'"
+            tabindex="-1"
+          >
+            <svg v-if="showPassword" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M1.5 10C2.833 5.833 6.333 3.5 10 3.5C13.667 3.5 17.167 5.833 18.5 10C17.167 14.167 13.667 16.5 10 16.5C6.333 16.5 2.833 14.167 1.5 10Z" stroke="#b0b0b0" stroke-width="1.5"/>
+              <circle cx="10" cy="10" r="3" stroke="#b0b0b0" stroke-width="1.5"/>
+            </svg>
+            <svg v-else width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M1.5 10C2.833 5.833 6.333 3.5 10 3.5C13.667 3.5 17.167 5.833 18.5 10C17.167 14.167 13.667 16.5 10 16.5C6.333 16.5 2.833 14.167 1.5 10Z" stroke="#b0b0b0" stroke-width="1.5"/>
+              <circle cx="10" cy="10" r="3" stroke="#b0b0b0" stroke-width="1.5"/>
+              <line x1="5" y1="15" x2="15" y2="5" stroke="#b0b0b0" stroke-width="1.5"/>
+            </svg>
+          </button>
+        </div>
       </div>
 
       <div class="row__item">
@@ -63,12 +82,13 @@ import { useAccountsStore } from '@/stores/accounts';
 const props = defineProps<{ account: Account }>();
 const emit = defineEmits(['update', 'delete']);
 
+const store = useAccountsStore();
+
 const hasError = ref(false);
 const localLabelStr = ref(props.account.label?.map(l => l.text).join(';') || '');
 const localAccount = ref<Account>({ ...props.account });
 const firstInput = ref<HTMLInputElement | null>(null);
-const store = useAccountsStore();
-
+const showPassword = ref(false);
 
 const handleLabelChange = () => {
   const labels = localLabelStr.value
@@ -169,6 +189,37 @@ button {
 
 .header-password {
   display: inline;
+}
+
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-wrapper input {
+  padding-right: 36px;
+}
+
+.eye-btn {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 2px;
+  cursor: pointer;
+  color: #b0b0b0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+
+  &:hover, &:focus {
+    color: #fff;
+    outline: none;
+  }
 }
 
 @media (max-width: 900px) {
