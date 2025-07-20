@@ -1,24 +1,58 @@
 # vue-accounts-dashboard
 
-## Project setup
-```
+Простое Vue 3 приложение для управления списком учётных записей с поддержкой Pinia и адаптивным тёмным интерфейсом.
+
+## Возможности
+
+- Добавление, редактирование и удаление учётных записей
+- Поддержка типов аккаунтов: Локальная и LDAP
+- Несколько меток для одной пары логин/пароль (через ;)
+- Сохранение данных в localStorage (persisted Pinia)
+- Современный адаптивный дизайн с тёмной темой
+
+## Быстрый старт
+
+### Установка зависимостей
+
+```bash
 npm install
 ```
 
-### Compiles and hot-reloads for development
-```
+### Запуск в режиме разработки
+
+```bash
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
+### Сборка для продакшена
+
+```bash
 npm run build
 ```
 
-### Lints and fixes files
-```
+### Линтинг и автоисправление
+
+```bash
 npm run lint
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+## Структура проекта
+
+- `src/components/AccountList.vue` — список аккаунтов, добавление, подсказка
+- `src/components/AccountForm.vue` — форма для одного аккаунта
+- `src/stores/accounts.ts` — Pinia store для аккаунтов
+- `src/types/account.ts` — типы аккаунтов
+- `src/App.vue` — корневой компонент, глобальные стили
+
+## Использование
+
+- Для добавления аккаунта нажмите круглую кнопку "+".
+- Для удаления используйте иконку корзины справа от аккаунта.
+- Для указания нескольких меток используйте разделитель `;` в поле "Метка".
+- Тип аккаунта можно выбрать из выпадающего списка.
+
+## Ссылки
+
+- [Vue 3](https://vuejs.org/)
+- [Pinia](https://pinia.vuejs.org/)
+- [Документация по конфигурации Vue CLI](https://cli.vuejs.org/config/)
