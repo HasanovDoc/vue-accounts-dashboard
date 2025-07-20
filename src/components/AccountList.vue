@@ -4,6 +4,7 @@
       <h1>Учётные записи</h1>
       <button @click="addAndFocus" class="add-btn"></button>
     </div>
+    <div class="account-hint">Для указания нескольких меток для одной пары логин/пароль используйте разделитель ;</div>
     <div class="account-list">
       <div v-for="account in accounts" :key="account.id" class="list_item">
         <AccountForm 
@@ -116,6 +117,38 @@ const addAndFocus = async () => {
     background: #23272a;
     color: #b0b0b0;
     transform: scale(0.97);
+  }
+}
+
+.account-hint {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: #23272a;
+  border: 1.5px solid #35393e;
+  border-radius: 8px;
+  padding: 12px 18px;
+  margin-bottom: 24px;
+  font-size: 1rem;
+  color: #b0b0b0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+
+  &::before {
+    content: '?';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    min-width: 26px;
+    min-height: 26px;
+    background: linear-gradient(135deg, #3a3f47 60%, #23272a 100%);
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.1em;
+    border-radius: 50%;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.10);
+    margin-right: 6px;
   }
 }
 
